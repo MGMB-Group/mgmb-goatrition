@@ -28,8 +28,11 @@ export default function ProfilePage() {
   }
 
   function handleSave(e: React.FormEvent) {
-    e.preventDefault()
-    usersStore.update(user.id, {
+  e.preventDefault()
+
+  if (!user) return
+
+  usersStore.update(user.id, {
       name:               form.name,
       weight:             form.weight  ? Number(form.weight)  : undefined,
       height:             form.height  ? Number(form.height)  : undefined,
